@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let startButton = document.getElementById("start-button");
   let quiz;
 
-  let mySound = new Audio("./audio/button-3.wav");
+  let mySound = new audio("./audio/button-3.wav");
   mySound.play();
 
   function startGame() {
