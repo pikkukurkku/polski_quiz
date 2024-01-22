@@ -4,7 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let endScreen = document.getElementById("end-screen");
   let startButton = document.getElementById("start-button");
   let quiz;
-  console.log("linked");
+
+  function startGame() {
+    this.quiz = new Quiz(questions);
+    this.quiz.shuffleQuestions();
+    this.quiz.getQuestion();
+    this.quiz.shuffleChoices();
+    this.quiz.showQuestion();
+    this.quiz.start();
+  }
+
   document.addEventListener("keydown", function (event) {
     console.log("key down");
     if (event.code === "Space") {
@@ -12,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Start game");
       startScreen.style.display = "none";
       gameScreen.style.display = "flex";
+      startGame();
     }
   });
   /************  QUIZ DATA  ************/
@@ -27,15 +37,4 @@ document.addEventListener("DOMContentLoaded", () => {
     ),
     new Question("What is this?", ["Komputador", "Komputer", "Kalkulator"], 2),
   ];
-
-  //   function startGame() {
-  //     this.startScreen.style.display = "none";
-  //     this.gameScreen.style.display = "block";
-  //     this.quiz = new Quiz(questions);
-  //     this.quiz.shuffleQuestions();
-  //     const question = quiz.getQuestion();
-  //     question.shuffleChoices();
-  //     this.showQuestion();
-  //     quiz.start();
-  //   }
 });
