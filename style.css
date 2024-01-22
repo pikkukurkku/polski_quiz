@@ -1,4 +1,55 @@
-body {
-  background-color: pink;
-  text-align: center;
+body,
+button {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 18px;
 }
+
+body {
+  background-color: white;
+  text-align: center;
+  font-family: "Luckiest Guy", cursive;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  /* box-sizing: border-box; */
+}
+
+#start-screen {
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 600px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+#game-screen {
+  background-color: aqua;
+}
+
+.arrows-img,
+.enter-img {
+  display: flex;
+  width: 120px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#start-button {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  margin: 15px auto;
+  padding: 8px;
+  color: red;
+}
+
+#end-view {
+  display: none;
+}
+.test{}

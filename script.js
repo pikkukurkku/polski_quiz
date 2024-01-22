@@ -9,17 +9,17 @@
     ),
         new Question(
       "Co to jest?",
-      ["Ogorek", "Pomidor", "Banan"],
+      ["Ogórek", "Pomidor", "Banan"],
       1
     ),
     new Question(
       "Co to jest?",
-      ["Dom", "Hus", "Kuca"],
+      ["Dom", "Hus", "Kuća"],
       1
     ),
     new Question(
       "The capital of Polska is...",
-      ["Krakow", "Budapest", "Warszawa"],
+      ["Kraków", "Budapest", "Warszawa"],
       3
     ),
     new Question(
@@ -30,3 +30,5 @@
 
     // Add more questions here
   ];
+
+  

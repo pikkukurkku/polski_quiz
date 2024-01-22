@@ -6,24 +6,50 @@
     <title>Polski quiz</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+    </style>
   </head>
+
   <body>
     <div id="start-screen">
       <h1>Polski quiz</h1>
-      <h2>Check your polski skills</h2>
+      <h2>Check your polski skills!!!</h2>
       <p>Use the left and right arrow to choose your answer</p>
       <img src="images\buttons.gif" alt="buttons gif" class="arrows-img" />
       <p>Press enter to submit your answer</p>
       <img src="images\enter.gif" alt="enter gif" class="enter-img" />
-      <button id="start-button">Start Game</button>
-
-      <h3>Tak, tak</h3>
+      <button id="start-button">Press space to start</button>
     </div>
 
     <div id="game-screen">
-      <h2>Question</h2>
+      <div id="progress">
+        <div id="progressBar"></div>
+      </div>
+      <div id="questionCount"></div>
+
+      <div class="content">
+        <div id="question"></div>
+        <ul id="choices"></ul>
+      </div>
     </div>
-    <script src="" async defer></script>
+
+    <div id="endView" class="view">
+      <div id="result-progress">
+        <div id="resultProgressBar"></div>
+      </div>
+
+      <p class="emphasis">Results</p>
+      <div class="content">
+        <div id="result"></div>
+      </div>
+      <!-- The below 'Restart Quiz' button is commented out because it is not used initially -->
+      <button id="restartButton" class="button-secondary">Restart Quiz</button>
+    </div>
+
+    <script src="./question.js" async defer></script>
+    <script src="./quiz.js" async defer></script>
+    <script src="./script.js" async defer></script>
   </body>
 </html>
