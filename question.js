@@ -14,4 +14,3 @@ class Question {
   }
 }
 
-console.log("Hello World");

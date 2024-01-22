@@ -27,6 +27,7 @@ body {
 }
 
 #game-screen {
+  display: none;
   background-color: aqua;
 }
 
@@ -41,15 +42,15 @@ body {
 #start-button {
   display: flex;
   justify-content: center;
-  width: 200px;
+  width: 300px;
   border: none;
   border-radius: 5px;
   margin: 15px auto;
   padding: 8px;
   color: red;
+  font-size: 22px;
 }
 
-#end-view {
+#end-screen {
   display: none;
 }
-.test{}

@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./images\magnifying-glass_12572663.png"
+    />
     <title>Polski quiz</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,36 +25,29 @@
       <img src="images\buttons.gif" alt="buttons gif" class="arrows-img" />
       <p>Press enter to submit your answer</p>
       <img src="images\enter.gif" alt="enter gif" class="enter-img" />
-      <button id="start-button">Press space to start</button>
+      <button id="start-button" tabindex="0">Press space to start</button>
     </div>
 
     <div id="game-screen">
-      <div id="progress">
-        <div id="progressBar"></div>
-      </div>
+      <div id="progress"></div>
       <div id="questionCount"></div>
 
       <div class="content">
-        <div id="question"></div>
+        <div id="question">Placeholder</div>
         <ul id="choices"></ul>
       </div>
     </div>
 
-    <div id="endView" class="view">
-      <div id="result-progress">
-        <div id="resultProgressBar"></div>
-      </div>
-
+    <div id="end-screen">
       <p class="emphasis">Results</p>
-      <div class="content">
-        <div id="result"></div>
-      </div>
-      <!-- The below 'Restart Quiz' button is commented out because it is not used initially -->
       <button id="restartButton" class="button-secondary">Restart Quiz</button>
+      <footer>
+        <a href="https://www.freepik.com/icons/favicon">Icon by riajulislam</a>
+      </footer>
     </div>
 
-    <script src="./question.js" async defer></script>
-    <script src="./quiz.js" async defer></script>
-    <script src="./script.js" async defer></script>
+    <script src="./question.js"></script>
+    <script src="./quiz.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
