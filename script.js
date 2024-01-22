@@ -3,19 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let gameScreen = document.getElementById("game-screen");
   let endScreen = document.getElementById("end-screen");
   let startButton = document.getElementById("start-button");
-  let quiz;
+  let questionContainer = document.getElementById("question-container");
 
-  let mySound = new audio("./audio/button-3.wav");
-  mySound.play();
-
-  function startGame() {
-    this.quiz = new Quiz(questions);
-    this.quiz.shuffleQuestions();
-    this.quiz.getQuestion();
-    this.quiz.shuffleChoices();
-    this.quiz.showQuestion();
-    this.quiz.start();
-  }
+  let mySound = new Audio("./audio/button-3.wav");
 
   document.addEventListener("keydown", function (event) {
     console.log("key down");
@@ -28,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       startGame();
     }
   });
+
   /************  QUIZ DATA  ************/
 
   const questions = [
@@ -41,4 +32,40 @@ document.addEventListener("DOMContentLoaded", () => {
     ),
     new Question("What is this?", ["Komputador", "Komputer", "Kalkulator"], 2),
   ];
+
+  let quiz = new Quiz(questions);
+  quiz.shuffleQuestions();
+  showQuestion();
+
+  function showQuestion() {
+    if (quiz.hasEnded()) {
+      showResults();
+      return;
+    }
+    questionContainer.innerText = "";
+    choiceContainer.innerHTML = "";
+    const question = quiz.getQuestion();
+    question.shuffleChoices();
+    questionContainer.innerText = question.text;
+    progressBar.style.width = `${
+      (quiz.currentQuestionIndex / quiz.questions.length) * 100
+    }%`;
+    questionCount.innerText = `Question ${quiz.currentQuestionIndex + 1} of ${
+      quiz.questions.length
+    }`;
+    question.choices.forEach((choice) => {
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "choice";
+      radio.value = choice;
+      choiceContainer.appendChild(radio);
+
+      const label = document.createElement("label");
+      label.innerText = choice;
+      choiceContainer.appendChild(label);
+
+      const br = document.createElement("br");
+      choiceContainer.appendChild(br);
+    });
+  }
 });
