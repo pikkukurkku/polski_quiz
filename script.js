@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let startButton = document.getElementById("start-button");
   let quiz;
 
+  let mySound = new Audio("./audio/button-3.wav");
+  mySound.play();
+
   function startGame() {
     this.quiz = new Quiz(questions);
     this.quiz.shuffleQuestions();
@@ -21,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Start game");
       startScreen.style.display = "none";
       gameScreen.style.display = "flex";
+      mySound.play();
       startGame();
     }
   });
