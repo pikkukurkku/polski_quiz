@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
           quiz.checkAnswer(selectedAnswer);
           quiz.moveToNextQuestion();
           showQuestion();
-          
         }
       }
     }
@@ -141,4 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
     spaceBarContext = "start";
     quiz.shuffleQuestions();
   }
+
+  const restartButton = document.querySelector("#restartButton");
+  restartButton.addEventListener("click", () => {
+    location.reload()
+  });
 });
