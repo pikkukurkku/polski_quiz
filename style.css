@@ -24,9 +24,22 @@ body {
   padding-top: 20px;
   box-sizing: border-box;
   min-height: 100vh;
-  background: url("./images/starowka.jpg");
+  z-index: 1;
+  opacity: 1
+ 
+}
+
+.start-screen-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  background: url("./images/starowka.jpg") center/cover; /* Apply background to this container */
   opacity: 0.5;
-  position: absolute;
+  position: relative;
   z-index: -1;
 }
 
