@@ -11,42 +11,102 @@ body {
   margin: 0;
   padding: 0;
   height: auto;
-  /* box-sizing: border-box; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #start-screen {
-  /* background-color: pink; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  width: 600px;
-  padding-top: 20px;
-  box-sizing: border-box;
-  min-height: 100vh;
-  z-index: 1;
-  opacity: 1
- 
-}
-
-.start-screen-container {
+  background-color: pink;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 600px;
+  margin: 0 auto;
+  width: 800px;
   padding-top: 20px;
   box-sizing: border-box;
-  background: url("./images/starowka.jpg") center/cover; /* Apply background to this container */
-  opacity: 0.5;
-  position: relative;
-  z-index: -1;
+  height: 100vh;
+  background: url("./images/starowka.jpg");
+  position: absolute;
+  top: 0;
+  background-size: cover;
+  background-position: center; /* Center the background image */
+  overflow: hidden;
 }
 
-#game-screen {
-  display: none;
-  background-color: aqua;
+
+#overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  opacity: 0.4;
+  z-index: 1; /* Place overlay on top of the background image */
 }
+
+#another-overlay {
+  width: 600%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: beige;
+  opacity: 0.1;
+  z-index: 1; /* Place overlay on top of the background image */
+}
+
+#text-container {
+  background-color: white;
+  padding: 50px;
+  opacity: 0.9;
+  z-index: 2;
+}
+
+#start-screen h1,
+#start-screen h2,
+#start-screen p,
+#start-screen button {
+  color: black; /* Set text color to white or any color that suits your design */
+  z-index: 3; /* Ensure text is on top of the overlay */
+}
+
+
+#game-screen {
+  font-size: 28px;
+  display: none;
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items:  center;
+  margin: 0 auto;
+  width: 800px;
+  padding-top: 50px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  /* background: url("./images/starowka.jpg");
+  position: absolute; */
+  top: 0;
+  background-size: cover;
+  background-position: center; /* Center the background image */
+  overflow: hidden; 
+}
+
+#question-image {
+  width: 400px;
+  height: auto;
+  margin-top: 80px;
+}
+
+#nextButton {
+  margin-bottom: 80px;
+  font-size: 20px;
+  padding: 10px ;
+}
+#game-screen ul {
+  list-style: none ;
+} 
 
 .arrows-img,
 .enter-img {
@@ -68,6 +128,21 @@ body {
   font-size: 22px;
 }
 
+.choice-label.selected {
+  border: 2px solid #00f; /* Add a border around the selected option */
+  padding: 5px; /* Add some padding to make it visually appealing */
+}
+
 #end-screen {
   display: none;
-}
+  font-size: 28px;
+  background-color: pink;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items:  center;
+  margin: 0 auto;
+  width: 800px;
+  padding-top: 50px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  }

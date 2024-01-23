@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let mySound = new Audio("./audio/button-3.wav");
   let spaceBarContext = "start";
   let quiz;
+  let selectedOptionIndex = 0;
 
   document.addEventListener("keydown", function (event) {
     console.log("key down");
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         quiz.moveToNextQuestion();
         mySound.play();
         showQuestion();
+        checkAnswer();
       }
     }
   });
@@ -33,16 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     spaceBarContext = "game";
     showQuestion();
   }
-
-  // function nextQuestion() {
-  //   let selectedAnswer;
-  //   const choices = document.querySelectorAll("input[name=choice]");
-  //   choices.forEach((choice) => {
-  //     if (choice.checked) {
-  //       selectedAnswer = choice.value;
-  //     }
-  //   });
-  // }
 
   function showResults() {
     gameScreen.style.display = "none";
@@ -60,6 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const question = quiz.getQuestion();
       question.shuffleChoices();
       console.log("Image URL:", question.imageURL);
+      imageContainer.onerror = function () {
+        console.error("Error loading image:", question.imageURL);
+      };
       imageContainer.src = question.imageURL;
       questionContainer.innerText = question.text;
       questionCount.innerText = `Question ${quiz.currentQuestionIndex + 1} of ${
@@ -80,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const br = document.createElement("br");
         choiceContainer.appendChild(br);
       });
-     
     } else {
       showResults();
     }
@@ -93,31 +87,36 @@ document.addEventListener("DOMContentLoaded", () => {
       "Who is this?",
       ["Messi", "Lewandowski", "Mbappe"],
       2,
-      "./images/lewy.jpg"
+      "./images/lewy_gif.gif",
+     
     ),
     new Question(
       "What is this?",
       ["Ogórek", "Pomidor", "Banan"],
       1,
-      "./images/ogorek.jpg"
+      "./images/ogorek.jpg",
+     
     ),
     new Question(
       "What is this?",
       ["Dom", "Hus", "Kuća"],
       1,
-      "./images/house.jpg"
+      "./images/home.webp",
+     
     ),
     new Question(
       "The capital of Polska is...",
       ["Kraków", "Budapest", "Warszawa"],
       3,
-      "./images/warszawa.jpg"
+      "./images/warszawa.jpg",
+     
     ),
     new Question(
       "What is this?",
       ["Komputador", "Komputer", "Kalkulator"],
       2,
-      "./images/computer.jpg"
+      "./images/komp.webp",
+     
     ),
   ];
 
