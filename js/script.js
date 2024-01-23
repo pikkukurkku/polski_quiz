@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.code === "Space") {
       event.preventDefault();
       if (spaceBarContext === "start") {
+        mySound.play();
         startGame();
       } else if (spaceBarContext === "game") {
         quiz.moveToNextQuestion();
