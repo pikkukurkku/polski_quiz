@@ -15,7 +15,7 @@ body {
 }
 
 #start-screen {
-  background-color: pink;
+  /* background-color: pink; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,6 +24,10 @@ body {
   padding-top: 20px;
   box-sizing: border-box;
   min-height: 100vh;
+  background: url("./images/starowka.jpg");
+  opacity: 0.5;
+  position: absolute;
+  z-index: -1;
 }
 
 #game-screen {

@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let gameScreen = document.getElementById("game-screen");
   let endScreen = document.getElementById("end-screen");
   let startButton = document.getElementById("start-button");
-  let questionContainer = document.getElementById("question-container");
+  let questionContainer = document.getElementById("question");
+  let imageContainer = document.getElementById("question-image");
+  let choiceContainer = document.getElementById("choices");
 
   let mySound = new Audio("./audio/button-3.wav");
 
@@ -15,22 +17,38 @@ document.addEventListener("DOMContentLoaded", () => {
       startScreen.style.display = "none";
       gameScreen.style.display = "flex";
       mySound.play();
-      startGame();
+      showQuestion();
     }
   });
 
   /************  QUIZ DATA  ************/
 
   const questions = [
-    new Question("Who is this?", ["Messi", "Lewandowski", "Mbappe"], 2),
-    new Question("What is this?", ["Ogórek", "Pomidor", "Banan"], 1),
-    new Question("What is this?", ["Dom", "Hus", "Kuća"], 1),
+    new Question(
+      "Who is this?",
+      ["Messi", "Lewandowski", "Mbappe"],
+      2,
+      "images/lewy.jpg"
+    ),
+    new Question(
+      "What is this?",
+      ["Ogórek", "Pomidor", "Banan"],
+      1,
+      "images/lewy.jpg"
+    ),
+    new Question("What is this?", ["Dom", "Hus", "Kuća"], 1, "imageslewy.jpg"),
     new Question(
       "The capital of Polska is...",
       ["Kraków", "Budapest", "Warszawa"],
-      3
+      3,
+      "images/lewy.jpg"
     ),
-    new Question("What is this?", ["Komputador", "Komputer", "Kalkulator"], 2),
+    new Question(
+      "What is this?",
+      ["Komputador", "Komputer", "Kalkulator"],
+      2,
+      "images/lewy.jpg"
+    ),
   ];
 
   let quiz = new Quiz(questions);
@@ -44,15 +62,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     questionContainer.innerText = "";
     choiceContainer.innerHTML = "";
-    const question = quiz.getQuestion();
-    question.shuffleChoices();
-    questionContainer.innerText = question.text;
-    progressBar.style.width = `${
-      (quiz.currentQuestionIndex / quiz.questions.length) * 100
-    }%`;
+    imageContainer.innerHTML = "";
+
     questionCount.innerText = `Question ${quiz.currentQuestionIndex + 1} of ${
       quiz.questions.length
     }`;
+
+    const question = quiz.getQuestion();
+    question.shuffleChoices();
+    questionContainer.textContent = question.text;
+
+    imageContainer.src = question.imageURL;
+    imageContainer.alt = "Question image";
+
     question.choices.forEach((choice) => {
       const radio = document.createElement("input");
       radio.type = "radio";
