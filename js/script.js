@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let questionContainer = document.getElementById("question");
   let imageContainer = document.getElementById("question-image");
   let choiceContainer = document.getElementById("choices");
-
   let mySound = new Audio("./audio/button-3.wav");
 
   document.addEventListener("keydown", function (event) {
@@ -34,20 +33,25 @@ document.addEventListener("DOMContentLoaded", () => {
       "What is this?",
       ["Ogórek", "Pomidor", "Banan"],
       1,
-      "images/lewy.jpg"
+      "images/ogorek.jpg"
     ),
-    new Question("What is this?", ["Dom", "Hus", "Kuća"], 1, "imageslewy.jpg"),
+    new Question(
+      "What is this?",
+      ["Dom", "Hus", "Kuća"],
+      1,
+      "images/house.jpg"
+    ),
     new Question(
       "The capital of Polska is...",
       ["Kraków", "Budapest", "Warszawa"],
       3,
-      "images/lewy.jpg"
+      "images/warszawa.jpg"
     ),
     new Question(
       "What is this?",
       ["Komputador", "Komputer", "Kalkulator"],
       2,
-      "images/lewy.jpg"
+      "images/computer.jpg"
     ),
   ];
 
