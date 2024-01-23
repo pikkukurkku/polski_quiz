@@ -22,9 +22,10 @@ class Quiz {
     this.questions = shuffled;
   }
 
-  checkAnswer(answer) {
-    if (this.getQuestion().answer === parseInt(answer)) {
+  checkAnswer(selectedAnswer) {
+    if (this.getQuestion().answer === selectedAnswer) {
       this.correctAnswers++;
+      console.log(this.correctAnswers);
     }
   }
 

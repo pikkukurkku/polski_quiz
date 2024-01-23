@@ -11,18 +11,32 @@ document.addEventListener("DOMContentLoaded", () => {
   let mySound = new Audio("./audio/button-3.wav");
   let spaceBarContext = "start";
   let quiz;
+  let selectedOptionIndex = 0;
 
   document.addEventListener("keydown", function (event) {
-    console.log("key down");
     if (event.code === "Space") {
       event.preventDefault();
+      console.log("Space bar pressed");
       if (spaceBarContext === "start") {
         mySound.play();
         startGame();
       } else if (spaceBarContext === "game") {
-        quiz.moveToNextQuestion();
-        mySound.play();
-        showQuestion();
+        let selectedAnswer;
+        const choices = document.querySelectorAll("input[name=choice]");
+
+        choices.forEach((choice) => {
+          if (choice.checked) {
+            selectedAnswer = choice.value;
+          }
+        });
+
+        if (selectedAnswer) {
+          console.log("Selected Answer:", selectedAnswer);
+          console.log("Correct Answer:", quiz.getQuestion().answer);
+          quiz.checkAnswer(selectedAnswer);
+          quiz.moveToNextQuestion();
+          showQuestion();
+        }
       }
     }
   });
@@ -33,16 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     spaceBarContext = "game";
     showQuestion();
   }
-
-  // function nextQuestion() {
-  //   let selectedAnswer;
-  //   const choices = document.querySelectorAll("input[name=choice]");
-  //   choices.forEach((choice) => {
-  //     if (choice.checked) {
-  //       selectedAnswer = choice.value;
-  //     }
-  //   });
-  // }
 
   function showResults() {
     gameScreen.style.display = "none";
@@ -60,6 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const question = quiz.getQuestion();
       question.shuffleChoices();
       console.log("Image URL:", question.imageURL);
+      imageContainer.onerror = function () {
+        console.error("Error loading image:", question.imageURL);
+      };
       imageContainer.src = question.imageURL;
       questionContainer.innerText = question.text;
       questionCount.innerText = `Question ${quiz.currentQuestionIndex + 1} of ${
@@ -80,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const br = document.createElement("br");
         choiceContainer.appendChild(br);
       });
-     
     } else {
       showResults();
     }
@@ -92,32 +98,32 @@ document.addEventListener("DOMContentLoaded", () => {
     new Question(
       "Who is this?",
       ["Messi", "Lewandowski", "Mbappe"],
-      2,
-      "./images/lewy.jpg"
+      "Lewandowski",
+      "./images/lewy_gif.gif"
     ),
     new Question(
       "What is this?",
       ["Ogórek", "Pomidor", "Banan"],
-      1,
+      "Ogórek",
       "./images/ogorek.jpg"
     ),
     new Question(
       "What is this?",
       ["Dom", "Hus", "Kuća"],
-      1,
-      "./images/house.jpg"
+      "Dom",
+      "./images/home.webp"
     ),
     new Question(
       "The capital of Polska is...",
       ["Kraków", "Budapest", "Warszawa"],
-      3,
-      "./images/warszawa.jpg"
+      "Warszawa",
+      "./images/93Iw.gif"
     ),
     new Question(
       "What is this?",
       ["Komputador", "Komputer", "Kalkulator"],
-      2,
-      "./images/computer.jpg"
+      "Komputer",
+      "./images/komp.webp"
     ),
   ];
 
@@ -134,4 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
     spaceBarContext = "start";
     quiz.shuffleQuestions();
   }
+
+  const restartButton = document.querySelector("#restartButton");
+  restartButton.addEventListener("click", () => {
+    location.reload()
+  });
 });
