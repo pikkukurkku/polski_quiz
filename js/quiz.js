@@ -23,7 +23,7 @@ class Quiz {
   }
 
   checkAnswer(answer) {
-    if (this.getQuestion().answer === answer) {
+    if (this.getQuestion().answer === parseInt(answer)) {
       this.correctAnswers++;
     }
   }

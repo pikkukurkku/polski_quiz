@@ -1,8 +1,9 @@
 class Question {
-  constructor(text, choices, answer) {
+  constructor(text, choices, answer, imageURL) {
     this.text = text;
     this.choices = choices;
-    this.answer = answer;
+    this.answer = answer
+    this.imageURL = imageURL;
   }
   shuffleChoices() {
     const shuffled = [];
