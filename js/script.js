@@ -10,18 +10,26 @@ document.addEventListener("DOMContentLoaded", () => {
   let resultContainer = document.getElementById("result-container");
   let comment = document.getElementById("comment");
   let mySound = new Audio("./audio/button-3.wav");
+  let applauseSound = new Audio("./audio/applause-2.wav");
+  let laugh = new Audio("./audio/laugh_5.wav");
+  let startGameSound = new Audio(
+    "./audio/mixkit-arcade-video-game-scoring-presentation-274.wav"
+  );
   let spaceBarContext = "start";
   let resultImage = document.getElementById("result-img");
   let quiz;
 
+
+  
   startScreen.style.display = "flex";
+ 
 
   document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
       event.preventDefault();
       console.log("Space bar pressed");
       if (spaceBarContext === "start") {
-        mySound.play();
+        startGameSound.play();;
         startGame();
       } else if (spaceBarContext === "game") {
         let selectedAnswer;
@@ -37,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("Selected Answer:", selectedAnswer);
           console.log("Correct Answer:", quiz.getQuestion().answer);
           quiz.checkAnswer(selectedAnswer);
+
           mySound.play();
           quiz.moveToNextQuestion();
           showQuestion();
@@ -52,6 +61,27 @@ document.addEventListener("DOMContentLoaded", () => {
     showQuestion();
   }
 
+  function showToast(message) {
+    toast.classList.add("show");
+    console.log("showToast called!");
+    setTimeout(function () {
+      toast.classList.remove("show");
+      console.log("has been closed!");
+    }, 300);
+  }
+
+  function closeToast() {
+    let toastCloseButton = document.getElementById("close-toast");
+    toastCloseButton.addEventListener(
+      "click",
+      () => {
+        toast.classList.remove("show");
+        console.log("has been closed!");
+      },
+      100
+    );
+  }
+
   function showResults() {
     gameScreen.style.display = "none";
     endScreen.style.display = "flex";
@@ -59,17 +89,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (quiz.correctAnswers === 6) {
       comment.innerText =
         "Polish citizenship will be granted to you personally by Lewandowski, no questions asked";
-      resultImage.src = "images/big win.gif";
-    } else if (quiz.correctAnswers < 6 && quiz.correctAnswers >= 3) {
+      resultImage.src = "images/heartred.webp";
+      applauseSound.play();
+    } else if (quiz.correctAnswers < 6 && quiz.correctAnswers >= 4) {
       comment.innerText =
         "Well done! Maybe one day you can eat dinner with Lewadowski";
-      resultImage.src = "images/win.gif";
-    } else if (quiz.correctAnswers < 3 && quiz.correctAnswers >= 2) {
+      resultImage.src = "images/lewy-slide.gif";
+      applauseSound.play();
+    } else if (quiz.correctAnswers < 4 && quiz.correctAnswers >= 2) {
       comment.innerText = "Not impressed. Could be worse";
       resultImage.src = "images/mediocre.webp";
+      laugh.play();
     } else if (quiz.correctAnswers < 2) {
       comment.innerText = "Lewandowski wouldn't even pass the ball to you";
-      resultImage.src = "images/lose.gif";
+      resultImage.src = "images/lewy-facepalm.gif";
+      laugh.play();
     }
   }
 
