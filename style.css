@@ -4,6 +4,10 @@ button {
   font-size: 18px;
 }
 
+#start-screen, #game-screen, #end-screen {
+  display: none;
+}
+
 body {
   background-color: white;
   text-align: center;
@@ -18,7 +22,6 @@ body {
 
 #start-screen {
   background-color: pink;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -75,7 +78,6 @@ body {
   font-size: 28px;
   display: none;
   background-color: pink;
-  display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -133,7 +135,6 @@ body {
 }
 
 #end-screen {
-  display: none;
   font-size: 28px;
   background-color: pink;
   flex-direction: column;

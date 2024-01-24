@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let quiz;
   let selectedOptionIndex = 0;
 
+  startScreen.style.display = "flex";
+
   document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
       event.preventDefault();
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("Selected Answer:", selectedAnswer);
           console.log("Correct Answer:", quiz.getQuestion().answer);
           quiz.checkAnswer(selectedAnswer);
+          mySound.play();
           quiz.moveToNextQuestion();
           showQuestion();
         }
@@ -143,6 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const restartButton = document.querySelector("#restartButton");
   restartButton.addEventListener("click", () => {
-    location.reload()
+    location.reload();
   });
 });
