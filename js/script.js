@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       comment.innerText = "Lewandowski just might play the ball to you"
       resultImage.src = "images/soso.webp";
     } else if (quiz.correctAnswers < 2) {
-          comment.innerText = "Lewandowski wouldn't even pass the ball to you" 
+          comment.innerText = "Srsly??? Lewandowski wouldn't even pass the ball to you, you loser" 
           resultImage.src = "images/lose.gif";
         }
       }
