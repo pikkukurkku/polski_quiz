@@ -8,12 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let choiceContainer = document.getElementById("choices");
   let questionCount = document.getElementById("questionCount");
   let resultContainer = document.getElementById("result-container");
+  let comment = document.getElementById("comment");
   let mySound = new Audio("./audio/button-3.wav");
   let spaceBarContext = "start";
+  let resultImage = document.getElementById("result-img");
+  const options = document.querySelectorAll('input[type="radio"]');
   let quiz;
-  let selectedOptionIndex = 0;
 
-  startScreen.style.display = "flex";
+
+  startScreen.style.display = "flex"; 
 
   document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
@@ -44,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
   function startGame() {
     startScreen.style.display = "none";
     gameScreen.style.display = "flex";
@@ -54,9 +58,23 @@ document.addEventListener("DOMContentLoaded", () => {
   function showResults() {
     gameScreen.style.display = "none";
     endScreen.style.display = "flex";
-    resultContainer.innerText = `You scored ${quiz.correctAnswers} out of ${quiz.questions.length} correct answers!`;
+    resultContainer.innerText = `You scored ${quiz.correctAnswers} out of ${quiz.questions.length} correct answers`;
+    if (quiz.correctAnswers === 5){
+    comment.innerText = "Polish citizenship will be granted to you personally by Lewandowski, no questions asked"
+    resultImage.src = "images/big win.gif";
+    } else if (quiz.correctAnswers < 5 && quiz.correctAnswers >= 3) {
+     comment.innerText = "Well done! Lewadowski might consider eating dinner with you (if you polish your Polish a bit)"
+     resultImage.src = "images/win.gif";
+    } else if (quiz.correctAnswers < 3 && quiz.correctAnswers >= 2) {
+      comment.innerText = "Lewandowski just might play the ball to you"
+      resultImage.src = "images/soso.webp";
+    } else if (quiz.correctAnswers < 2) {
+          comment.innerText = "Lewandowski wouldn't even pass the ball to you" 
+          resultImage.src = "images/lose.gif";
+        }
+      }
     // resetQuiz();
-  }
+
 
   function showQuestion() {
     if (!quiz.hasEnded()) {
@@ -94,6 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
       showResults();
     }
   }
+
+  
 
   /************  QUIZ DATA  ************/
 

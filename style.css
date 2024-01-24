@@ -4,7 +4,9 @@ button {
   font-size: 18px;
 }
 
-#start-screen, #game-screen, #end-screen {
+#start-screen,
+#game-screen,
+#end-screen {
   display: none;
 }
 
@@ -14,10 +16,11 @@ body {
   font-family: "Luckiest Guy", cursive;
   margin: 0;
   padding: 0;
-  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 #start-screen {
@@ -27,9 +30,9 @@ body {
   align-items: center;
   margin: 0 auto;
   width: 800px;
-  padding-top: 20px;
+  padding: 20px 0;
   box-sizing: border-box;
-  height: 100vh;
+  min-height: 100vh;
   background: url("./images/starowka.jpg");
   position: absolute;
   top: 0;
@@ -50,12 +53,16 @@ body {
 
 #another-overlay {
   width: 600%;
-  height: 100%;
+  min-height: 100vh;
   position: absolute;
   top: 0;
   background-color: beige;
   opacity: 0.1;
   z-index: 1; /* Place overlay on top of the background image */
+}
+
+input[type="radio"]:focus + label {
+  border-color: #3498db;
 }
 
 #text-container {
@@ -64,6 +71,7 @@ body {
   opacity: 0.9;
   z-index: 2;
   width: 50%;
+  position: relative;
 }
 
 #start-screen h1,
@@ -142,7 +150,23 @@ body {
   align-items: center;
   margin: 0 auto;
   width: 800px;
-  padding-top: 50px;
+  padding: 50px 40px;
   box-sizing: border-box;
   min-height: 100vh;
+}
+
+#result-img {
+  width: 180px;
+}
+#restartButton {
+  width: 200px;
+  padding: 15px;
+  font-size: 25px;
+  border-radius: 20px;
+  border: 1px solid grey;
+  color: red;
+}
+
+#result-container {
+  margin-bottom: 40px;
 }
