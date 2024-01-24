@@ -21,6 +21,7 @@ End screen
 ![end screen](./images/Screenshot_endScreen.png)
 
 ## MVP
+
 - renders a game in the browser
 - available online
 - has logic for winning/losing
@@ -29,7 +30,6 @@ End screen
 - game entities and elements are organized using classes and OOP
 - progress registered on branches and multliple commits
 - KISS and DRY priciples
-
 
 ## Backlog
 
