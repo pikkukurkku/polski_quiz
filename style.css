@@ -8,6 +8,7 @@ button {
 #game-screen,
 #end-screen {
   display: none;
+  height: 100%; 
 }
 
 body {
@@ -20,25 +21,23 @@ body {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  height: 100%;
 }
 
 #start-screen {
   background-color: pink;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: 0 auto;
   width: 800px;
   padding: 20px 0;
   box-sizing: border-box;
-  min-height: 100vh;
+  max-height: 100vh;
   background: url("./images/starowka.jpg");
   position: absolute;
   top: 0;
   background-size: cover;
   background-position: center; /* Center the background image */
-  overflow: hidden;
+  height: 100%
 }
 
 #overlay {
@@ -53,7 +52,7 @@ body {
 
 #another-overlay {
   width: 600%;
-  min-height: 100vh;
+  max-height: 100vh;
   position: absolute;
   top: 0;
   background-color: beige;
@@ -61,17 +60,18 @@ body {
   z-index: 1; /* Place overlay on top of the background image */
 }
 
-input[type="radio"]:focus + label {
-  border-color: #3498db;
-}
-
 #text-container {
   background-color: white;
-  padding: 60px;
+  padding: 2px 70px; 
   opacity: 0.9;
   z-index: 2;
-  width: 50%;
+  width: 70%;
+  height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-sizing: border-box;
 }
 
 #start-screen h1,
@@ -93,34 +93,27 @@ input[type="radio"]:focus + label {
   width: 800px;
   padding-top: 50px;
   box-sizing: border-box;
-  min-height: 100vh;
-  /* background: url("./images/starowka.jpg");
-  position: absolute; */
-  top: 0;
-  background-size: cover;
-  background-position: center; /* Center the background image */
-  overflow: hidden;
+  min-height: 100vh; 
 }
 
 #question-image {
-  width: 400px;
+  width: 280px;
   height: auto;
-  margin-top: 80px;
+  margin-top: 30px;
 }
+ 
 
 #nextButton {
-  margin-bottom: 80px;
+  margin-bottom: 30px;
   font-size: 20px;
   padding: 10px;
 }
-#game-screen ul {
-  list-style: none;
-}
+
 
 .arrows-img,
 .enter-img {
   display: flex;
-  width: 180px;
+  width: 110px;
   justify-content: center;
   margin: 0 auto;
 }
@@ -137,10 +130,6 @@ input[type="radio"]:focus + label {
   font-size: 22px;
 }
 
-.choice-label.selected {
-  border: 2px solid #00f; /* Add a border around the selected option */
-  padding: 5px; /* Add some padding to make it visually appealing */
-}
 
 #end-screen {
   font-size: 28px;
@@ -169,4 +158,11 @@ input[type="radio"]:focus + label {
 
 #result-container {
   margin-bottom: 40px;
+}
+
+
+@media (max-width: 500px) {
+  #start-screen, #game-screen, #end-screen {
+    width: 90%; /* Adjust the width for smaller screens */
+  }
 }

@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const options = document.querySelectorAll('input[type="radio"]');
   let quiz;
 
-
-  startScreen.style.display = "flex"; 
+  startScreen.style.display = "flex";
 
   document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
@@ -47,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-
   function startGame() {
     startScreen.style.display = "none";
     gameScreen.style.display = "flex";
@@ -59,22 +57,23 @@ document.addEventListener("DOMContentLoaded", () => {
     gameScreen.style.display = "none";
     endScreen.style.display = "flex";
     resultContainer.innerText = `You scored ${quiz.correctAnswers} out of ${quiz.questions.length} correct answers`;
-    if (quiz.correctAnswers === 5){
-    comment.innerText = "Polish citizenship will be granted to you personally by Lewandowski, no questions asked"
-    resultImage.src = "images/big win.gif";
-    } else if (quiz.correctAnswers < 5 && quiz.correctAnswers >= 3) {
-     comment.innerText = "Well done! Lewadowski might consider eating dinner with you (if you polish your Polish a bit)"
-     resultImage.src = "images/win.gif";
+    if (quiz.correctAnswers === 6) {
+      comment.innerText =
+        "Polish citizenship will be granted to you personally by Lewandowski, no questions asked";
+      resultImage.src = "images/big win.gif";
+    } else if (quiz.correctAnswers < 6 && quiz.correctAnswers >= 3) {
+      comment.innerText =
+        "Well done! Maybe one day you can eat dinner with Lewadowski";
+      resultImage.src = "images/win.gif";
     } else if (quiz.correctAnswers < 3 && quiz.correctAnswers >= 2) {
-      comment.innerText = "Lewandowski just might play the ball to you"
-      resultImage.src = "images/soso.webp";
+      comment.innerText = "Not impressed. Could be worse";
+      resultImage.src = "images/mediocre.webp";
     } else if (quiz.correctAnswers < 2) {
-          comment.innerText = "Srsly??? Lewandowski wouldn't even pass the ball to you, you loser" 
-          resultImage.src = "images/lose.gif";
-        }
-      }
-    // resetQuiz();
-
+      comment.innerText = "Lewandowski wouldn't even pass the ball to you";
+      resultImage.src = "images/lose.gif";
+    }
+  }
+  // resetQuiz();
 
   function showQuestion() {
     if (!quiz.hasEnded()) {
@@ -113,8 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  
-
   /************  QUIZ DATA  ************/
 
   const questions = [
@@ -147,6 +144,12 @@ document.addEventListener("DOMContentLoaded", () => {
       ["Komputador", "Komputer", "Kalkulator"],
       "Komputer",
       "./images/komp.webp"
+    ),
+    new Question(
+      "How do Polish people greet each other?",
+      ["Salve!", "Aloha!", "Cześć!"],
+      "Cześć!",
+      "./images/hi.webp"
     ),
   ];
 
