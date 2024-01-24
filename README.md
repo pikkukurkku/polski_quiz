@@ -4,14 +4,24 @@
 
 ## Description
 
-Brief description of the project TODO TODO TODO
+A quirky little quiz about Poland and the Polish language. No in-depth knowledge required.
 
 ## Images
 
-ADD SOME SCREENSHOTS
+Start screen:
+
+![start screen](./images/Screenshot%20start%20screen.png)
+
+Game screen
+
+![game screen](./images/Screenshot_game_sceen.png)
+
+End screen
+
+![end screen](./images/Screenshot_endScreen.png)
 
 ## MVP
-- renders a game in the browsergit add 
+- renders a game in the browser
 - available online
 - has logic for winning/losing
 - the game is organized in separate files for HTML, CSS and JavaSxcript
@@ -29,7 +39,17 @@ ADD SOME SCREENSHOTS
 
 ## Data structure
 
-_List of classes and methods_ TODO TODO TODO
+- question class in question.js file
+- quiz class in quiz.js for the quiz logic
+- script.js for the general game logic
+
+Methods inlude
+
+- start game
+- shuffle questions
+- show question
+- restart quiz
+- show results
 
 ## States y States Transitions
 
@@ -46,10 +66,11 @@ _List of classes and methods_ TODO TODO TODO
 - search for images online
 - code start screen and transition to game screen
 - create the javaScript classes
-- code the quiz logic
-- test the quiz logic
+- code the qame logic
+- test the game logic
 - code the end game screen
 - implement restart button functionality
+- test website functionality
 - update css
 - deploy website
 
