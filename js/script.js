@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let startScreen = document.getElementById("start-screen");
   let gameScreen = document.getElementById("game-screen");
   let endScreen = document.getElementById("end-screen");
-  let startButton = document.getElementById("start-button");
+  // let startButton = document.getElementById("start-button");
   let questionContainer = document.getElementById("question");
   let imageContainer = document.getElementById("question-image");
   let choiceContainer = document.getElementById("choices");
@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let mySound = new Audio("./audio/button-3.wav");
   let spaceBarContext = "start";
   let resultImage = document.getElementById("result-img");
-  const options = document.querySelectorAll('input[type="radio"]');
   let quiz;
 
   startScreen.style.display = "flex";
@@ -73,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
       resultImage.src = "images/lose.gif";
     }
   }
-  // resetQuiz();
 
   function showQuestion() {
     if (!quiz.hasEnded()) {
@@ -156,16 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
   quiz = new Quiz(questions);
   quiz.shuffleQuestions();
   showQuestion();
-  // nextButton.addEventListener("click", nextButtonHandler);
-
-  function resetQuiz() {
-    quiz = new Quiz(questions);
-    startScreen.style.display = "flex";
-    gameScreen.style.display = "none";
-    endScreen.style.display = "none";
-    spaceBarContext = "start";
-    quiz.shuffleQuestions();
-  }
 
   const restartButton = document.querySelector("#restartButton");
   restartButton.addEventListener("click", () => {

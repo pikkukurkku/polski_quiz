@@ -77,6 +77,6 @@ Methods inlude
 ## Links
 
 - [Trello Link](https://trello.com/b/HXiTWsPR/polski-quiz)
-- [Slides Link](http://slides.com)
+- [Slides Link](https://prezi.com/p/edit/irgcw7iangz1/)
 - [Github repository Link](https://github.com/pikkukurkku/polski_quiz)
 - [Deployment Link](https://pikkukurkku.github.io/polski_quiz/)
