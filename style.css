@@ -1,7 +1,6 @@
 body,
 button {
   font-family: "Press Start 2P", system-ui;
-  /* font-family: "Luckiest Guy", cursive; */
   font-size: 8px;
   color: black;
 }
@@ -17,8 +16,6 @@ button {
 body {
   background-color: white;
   text-align: center;
-  font-family: "Press Start 2P", system-ui;
-  /* font-family: "Luckiest Guy", cursive; */
   margin: 0;
   padding: 0;
   display: flex;
@@ -35,28 +32,16 @@ body {
   margin: 0 auto;
   width: 800px;
   padding: 20px 0;
-  box-sizing: border-box;
-  max-height: 100vh;
+  box-sizing: border-box;  
   background: url("./images/pacman.webp");
   position: absolute;
   top: 0;
   background-size: cover;
-  background-position: center; /* Center the background image */
+  background-position: center;
   height: 100%;
   color: black;
 }
 
-input[type="radio"] {
-  vertical-align: top; /* Align radio button with the text vertically */
-  position: relative; /* Set the position to relative */
-  margin-right: 10px; /* Add some space between the radio button and the text */
-  width: 20px;
-  height: 20px;
-}
-
-/* #pacman {
-  width: 00px;
-} */
 
 #overlay {
   width: 100%;
@@ -65,17 +50,7 @@ input[type="radio"] {
   top: 0;
   background-color: white;
   opacity: 0.4;
-  z-index: 1; /* Place overlay on top of the background image */
-}
-
-#another-overlay {
-  width: 600%;
-  max-height: 100vh;
-  position: absolute;
-  top: 0;
-  background-color: beige;
-  opacity: 0.1;
-  z-index: 1; /* Place overlay on top of the background image */
+  z-index: 1; 
 }
 
 #text-container {
@@ -92,6 +67,14 @@ input[type="radio"] {
   box-sizing: border-box;
 }
 
+#pacman {
+  width: 300px;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  margin-top: 10px;
+}
+
 #text-container p {
   margin-top: 50px;
   font-size: 16px;
@@ -102,7 +85,6 @@ input[type="radio"] {
   font-size: 28px;
 }
 
-/* Define a blink animation */
 @keyframes blink {
   0% {
     opacity: 1;
@@ -115,18 +97,32 @@ input[type="radio"] {
   }
 }
 
-/* Apply the blink animation to the <p> element */
 .blinking {
-  animation: blink 3s infinite; /* Adjust the duration as needed */
-  color: red !important;
+  animation: blink 3s infinite;
+  color: red;
 }
 
-#start-screen h1,
-#start-screen h2,
-#start-screen p,
-#start-screen button {
-  color: black; /* Set text color to white or any color that suits your design */
-  z-index: 3; /* Ensure text is on top of the overlay */
+#start-button {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px auto 15px auto;
+  padding: 8px;
+  font-size: 20px;
+  background-color: white
+}
+
+#retro-load {
+  background-color: pink;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  width: 620px;
+  box-sizing: border-box;
+  min-height: 100vh;
 }
 
 #game-screen {
@@ -143,55 +139,24 @@ input[type="radio"] {
   min-height: 100vh;
 }
 
-#retro-load {
-  background-color: pink;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
-  width: 620px;
-  box-sizing: border-box;
-  min-height: 100vh;
+input[type="radio"] {
+  vertical-align: top; 
+  position: relative; 
+  margin-right: 10px; 
+  width: 20px;
+  height: 20px;
 }
+
 #question-image {
   width: 280px;
   height: auto;
   margin-top: 30px;
 }
 
-#pacman {
-  width: 250px;
-  justify-content: center;
-  align-content: center;
-  align-self: center;
-  margin-top: 10px;
-}
-
 #nextButton {
   margin-bottom: 30px;
   font-size: 20px;
   padding: 10px;
-}
-
-.arrows-img,
-.enter-img {
-  display: flex;
-  width: 110px;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-#start-button {
-  display: flex;
-  justify-content: center;
-  width: 300px;
-  border: none;
-  border-radius: 5px;
-  margin: 10px auto 15px auto;
-  padding: 8px;
-  color: red;
-  font-size: 20px;
-  background-color: white
 }
 
 #end-screen {
@@ -227,6 +192,6 @@ input[type="radio"] {
   #start-screen,
   #game-screen,
   #end-screen {
-    width: 90%; /* Adjust the width for smaller screens */
+    width: 90%; 
   }
 }

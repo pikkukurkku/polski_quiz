@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   let startScreen = document.getElementById("start-screen");
-  let loadScreen = document.getElementById("load-screen")
+  let loadScreen = document.getElementById("load-screen");
   let gameScreen = document.getElementById("game-screen");
   let endScreen = document.getElementById("end-screen");
-  // let startButton = document.getElementById("start-button");
   let questionContainer = document.getElementById("question");
   let imageContainer = document.getElementById("question-image");
   let choiceContainer = document.getElementById("choices");
@@ -20,10 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let resultImage = document.getElementById("result-img");
   let quiz;
 
-
-  
   startScreen.style.display = "flex";
- 
 
   document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
@@ -35,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loadScreen.style.display = "flex";
         spaceBarContext = "load";
         setTimeout(() => {
-        startGame();
+          startGame();
         }, 3200);
       } else if (spaceBarContext === "game") {
         let selectedAnswer;
@@ -100,10 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const question = quiz.getQuestion();
       question.shuffleChoices();
-      console.log("Image URL:", question.imageURL);
-      imageContainer.onerror = function () {
-        console.error("Error loading image:", question.imageURL);
-      };
       imageContainer.src = question.imageURL;
       questionContainer.innerText = question.text;
       questionCount.innerText = `Question ${quiz.currentQuestionIndex + 1} of ${
