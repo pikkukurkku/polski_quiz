@@ -9,8 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./style.css" />
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+      </style>
+    <!-- <style>
       @import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
-    </style>
+    </style> -->
   </head>
 
   <body>
@@ -21,14 +24,19 @@
       <div id ="text-container">
       <h1>Polski quiz</h1>
       <h2>Check your polski skills!!!</h2>
-      <p>Use the left and right arrow to choose your answer</p>
+      <img id="pacman" src="./images/pacman.webp" alt="pacman">
+      <!-- <p>Use the left and right arrow to choose your answer</p>
       <img src="images\buttons.gif" alt="buttons gif" class="arrows-img" />
       <p>Press enter to submit your answer</p>
-      <img src="images\enter.gif" alt="enter gif" class="enter-img" />
-      <button id="start-button">Hit space to start</button>
+      <img src="images\enter.gif" alt="enter gif" class="enter-img" /> -->
+      <p>Are you ready?</p>
+      <button id="start-button">Press space to start</button>
     </div>
     </div>
 
+    <div id="load-screen">
+      <img id="retro-load" src="./images/loadingretro.webp" alt="windows-84-start-screen">
+    </div>
 
 
     <div id="game-screen">
@@ -45,6 +53,10 @@
         <button id="nextButton" class="button-primary">
           Press space to continue
         </button>
+        <div id="toast" class="toast">
+          <span id="toast-message">Lift off! 🚀</span>
+          <span id="close-toast">x</span>
+        </div>
   
     </div>
 

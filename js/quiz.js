@@ -24,7 +24,7 @@ class Quiz {
 
   checkAnswer(selectedAnswer) {
     if (this.getQuestion().answer === selectedAnswer) {
-      this.correctAnswers++;
+      this.correctAnswers++; 
       console.log(this.correctAnswers);
     }
   }
