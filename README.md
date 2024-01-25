@@ -10,17 +10,25 @@ A quirky little quiz about Poland and the Polish language. No in-depth knowledge
 
 Start screen:
 
-![start screen](./images/Screenshot%20start%20screen.png)
+<video width="320" height="240" controls autoplay>
+  <source src="./images/screenrecording.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+Load screen:
+
+![load screen](./images/loadingretro.webp)
 
 Game screen
 
-![game screen](./images/Screenshot_game_sceen.png)
+![game screen](./images/ScreenshotGameScreen2.0.png)
 
 End screen
 
-![end screen](./images/Screenshot_endScreen.png)
+![end screen](./images/EndScreen.png)
 
 ## MVP
+
 - renders a game in the browser
 - available online
 - has logic for winning/losing
@@ -30,12 +38,11 @@ End screen
 - progress registered on branches and multliple commits
 - KISS and DRY priciples
 
-
 ## Backlog
 
 - an animated progress bar
-- event handlers for arrows and the enter key, as specified on the start screen
-- a toast with immediate feedback for each question
+- event handlers for arrows and the enter key
+- a toast or sound with immediate feedback for each question
 
 ## Data structure
 
@@ -54,6 +61,7 @@ Methods inlude
 ## States y States Transitions
 
 - start screen (introduction and instructions)
+- load screen (mimicking retro game behaviour)
 - game screen (loops multiple quiz questions)
 - end screen (presents multiple outcomes depneding on result)
 
@@ -64,11 +72,11 @@ Methods inlude
 - create new repository on GitHub
 - create HTML, basic CSS and javaScript files
 - search for images online
-- code start screen and transition to game screen
+- code start screen and transition to load screen and game screen
 - create the javaScript classes
 - code the qame logic
 - test the game logic
-- code the end game screen
+- code the end game screen with multiple outcomes
 - implement restart button functionality
 - test website functionality
 - update css
