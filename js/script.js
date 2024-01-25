@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   let startScreen = document.getElementById("start-screen");
+  let loadScreen = document.getElementById("load-screen")
   let gameScreen = document.getElementById("game-screen");
   let endScreen = document.getElementById("end-screen");
   // let startButton = document.getElementById("start-button");
@@ -10,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let resultContainer = document.getElementById("result-container");
   let comment = document.getElementById("comment");
   let mySound = new Audio("./audio/button-3.wav");
-  let loadScreen = document.getElementById("load-screen")
   let applauseSound = new Audio("./audio/applause-2.wav");
   let laugh = new Audio("./audio/laugh_5.wav");
   let startGameSound = new Audio(
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         spaceBarContext = "load";
         setTimeout(() => {
         startGame();
-        }, 3000);
+        }, 3200);
       } else if (spaceBarContext === "game") {
         let selectedAnswer;
         const choices = document.querySelectorAll("input[name=choice]");
@@ -65,27 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gameScreen.style.display = "flex";
     spaceBarContext = "game";
     showQuestion();
-  }
-
-  function showToast(message) {
-    toast.classList.add("show");
-    console.log("showToast called!");
-    setTimeout(function () {
-      toast.classList.remove("show");
-      console.log("has been closed!");
-    }, 300);
-  }
-
-  function closeToast() {
-    let toastCloseButton = document.getElementById("close-toast");
-    toastCloseButton.addEventListener(
-      "click",
-      () => {
-        toast.classList.remove("show");
-        console.log("has been closed!");
-      },
-      100
-    );
   }
 
   function showResults() {
