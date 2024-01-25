@@ -46,6 +46,15 @@ body {
   color: black;
 }
 
+input[type="radio"] {
+  vertical-align: top; /* Align radio button with the text vertically */
+  position: relative; /* Set the position to relative */
+  margin-right: 10px; /* Add some space between the radio button and the text */
+  width: 20px;
+  height: 20px;
+}
+
+
 /* #pacman {
   width: 00px;
 } */
@@ -106,18 +115,6 @@ body {
   min-height: 100vh;
 }
 
-/* #load-screen {
-  display: none;
-  background-color: pink;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
-  width: 800px;
-  padding-top: 50px;
-  box-sizing: border-box;
-  min-height: 100vh; 
-} */
 
 #retro-load {
   background-color: pink;
