@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let resultContainer = document.getElementById("result-container");
   let comment = document.getElementById("comment");
   let mySound = new Audio("./audio/button-3.wav");
+  let loadScreen = document.getElementById("load-screen")
   let applauseSound = new Audio("./audio/applause-2.wav");
   let laugh = new Audio("./audio/laugh_5.wav");
   let startGameSound = new Audio(
@@ -29,8 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       console.log("Space bar pressed");
       if (spaceBarContext === "start") {
-        startGameSound.play();;
+        startGameSound.play();
+        startScreen.style.display = "none";
+        loadScreen.style.display = "flex";
+        spaceBarContext = "load";
+        setTimeout(() => {
         startGame();
+        }, 3000);
       } else if (spaceBarContext === "game") {
         let selectedAnswer;
         const choices = document.querySelectorAll("input[name=choice]");
@@ -55,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function startGame() {
-    startScreen.style.display = "none";
+    loadScreen.style.display = "none";
     gameScreen.style.display = "flex";
     spaceBarContext = "game";
     showQuestion();
