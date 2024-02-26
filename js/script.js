@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let spaceBarContext = "start";
   let resultImage = document.getElementById("result-img");
   let quiz;
+  const isMobile = window.innerWidth <= 768;
+
 
   startScreen.style.display = "flex";
 
@@ -55,6 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+
 
   function startGame() {
     loadScreen.style.display = "none";
@@ -170,4 +174,78 @@ document.addEventListener("DOMContentLoaded", () => {
   restartButton.addEventListener("click", () => {
     location.reload();
   });
+
+  if (isMobile) {
+    document.removeEventListener("keydown", handleKeyDown);
+    startButton.addEventListener("click", function () {
+      if (spaceBarContext === "start") {
+        startGameSound.play();
+        startScreen.style.display = "none";
+        loadScreen.style.display = "flex";
+        spaceBarContext = "load";
+        setTimeout(() => {
+          startGame();
+        }, 3200);
+      } else if (spaceBarContext === "game") {
+        // Handle click for game context
+        let selectedAnswer;
+        const choices = document.querySelectorAll("input[name=choice]");
+
+        choices.forEach((choice) => {
+          if (choice.checked) {
+            selectedAnswer = choice.value;
+          }
+        });
+
+        if (selectedAnswer) {
+          console.log("Selected Answer:", selectedAnswer);
+          console.log("Correct Answer:", quiz.getQuestion().answer);
+          quiz.checkAnswer(selectedAnswer);
+
+          mySound.play();
+          quiz.moveToNextQuestion();
+          showQuestion();
+        }
+      }
+    });
+  } else {
+    // Add the space bar event listener for non-mobile devices
+    document.addEventListener("keydown", handleKeyDown);
+  }
+
+  function handleKeyDown(event) {
+    if (event.code === "Space") {
+      event.preventDefault();
+      console.log("Space bar pressed");
+      if (spaceBarContext === "start") {
+        startGameSound.play();
+        startScreen.style.display = "none";
+        loadScreen.style.display = "flex";
+        spaceBarContext = "load";
+        setTimeout(() => {
+          startGame();
+        }, 3200);
+      } else if (spaceBarContext === "game") {
+        let selectedAnswer;
+        const choices = document.querySelectorAll("input[name=choice]");
+
+        choices.forEach((choice) => {
+          if (choice.checked) {
+            selectedAnswer = choice.value;
+          }
+        });
+
+        if (selectedAnswer) {
+          console.log("Selected Answer:", selectedAnswer);
+          console.log("Correct Answer:", quiz.getQuestion().answer);
+          quiz.checkAnswer(selectedAnswer);
+
+          mySound.play();
+          quiz.moveToNextQuestion();
+          showQuestion();
+        }
+      }
+    }
+  
+  }
 });

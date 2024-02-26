@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/jpg/flag" href="./images/download_flag.jpg" />
     <title>Polski quiz</title>
     <meta name="description" content="" />
@@ -55,6 +56,27 @@
       <button id="restartButton" class="button-secondary">Restart Quiz</button>
     </div>
 
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var startButton = document.getElementById("start-button");
+    
+        function updateButtonText() {
+          var windowWidth = window.innerWidth;
+    
+          if (windowWidth <= 768) {
+            startButton.textContent = "Start game";
+          } else {
+            startButton.textContent = "Press space to start";
+          }
+        }
+    
+        updateButtonText();
+    
+        window.addEventListener("resize", updateButtonText);
+      });
+    </script>
+    
     <script src="./js/question.js"></script>
     <script src="./js/quiz.js"></script>
     <script src="./js/script.js"></script>
