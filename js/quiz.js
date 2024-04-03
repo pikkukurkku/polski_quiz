@@ -32,4 +32,9 @@ class Quiz {
   hasEnded() {
     return this.currentQuestionIndex === this.questions.length;
   }
+  reset() {
+    this.currentQuestionIndex = 0;
+    this.correctAnswers = 0;
+    // Additional logic to reset any other game-specific state
+  }
 }

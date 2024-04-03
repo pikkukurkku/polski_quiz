@@ -1,64 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let startScreen = document.getElementById("start-screen");
-  let loadScreen = document.getElementById("load-screen");
-  let gameScreen = document.getElementById("game-screen");
-  let endScreen = document.getElementById("end-screen");
-  let questionContainer = document.getElementById("question");
-  let imageContainer = document.getElementById("question-image");
-  let choiceContainer = document.getElementById("choices");
-  let questionCount = document.getElementById("questionCount");
-  let resultContainer = document.getElementById("result-container");
-  let comment = document.getElementById("comment");
-  let mySound = new Audio("./audio/button-3.wav");
-  let applauseSound = new Audio("./audio/applause-2.wav");
-  let laugh = new Audio("./audio/laugh_5.wav");
-  let startGameSound = new Audio(
+  const startScreen = document.getElementById("start-screen");
+  const loadScreen = document.getElementById("load-screen");
+  const gameScreen = document.getElementById("game-screen");
+  const endScreen = document.getElementById("end-screen");
+  const questionContainer = document.getElementById("question");
+  const imageContainer = document.getElementById("question-image");
+  const choiceContainer = document.getElementById("choices");
+  const questionCount = document.getElementById("questionCount");
+  const resultContainer = document.getElementById("result-container");
+  const comment = document.getElementById("comment");
+  const mySound = new Audio("./audio/button-3.wav");
+  const applauseSound = new Audio("./audio/applause-2.wav");
+  const laugh = new Audio("./audio/laugh_5.wav");
+  const startGameSound = new Audio(
     "./audio/mixkit-arcade-video-game-scoring-presentation-274.wav"
   );
+  const startButton = document.getElementById("start-button");
+  const restartButton = document.querySelector("#restartButton");
   let spaceBarContext = "start";
   let resultImage = document.getElementById("result-img");
   let quiz;
   const isMobile = window.innerWidth <= 768;
 
-
   startScreen.style.display = "flex";
-
-  document.addEventListener("keydown", function (event) {
-    if (event.code === "Space") {
-      event.preventDefault();
-      console.log("Space bar pressed");
-      if (spaceBarContext === "start") {
-        startGameSound.play();
-        startScreen.style.display = "none";
-        loadScreen.style.display = "flex";
-        spaceBarContext = "load";
-        setTimeout(() => {
-          startGame();
-        }, 3200);
-      } else if (spaceBarContext === "game") {
-        let selectedAnswer;
-        const choices = document.querySelectorAll("input[name=choice]");
-
-        choices.forEach((choice) => {
-          if (choice.checked) {
-            selectedAnswer = choice.value;
-          }
-        });
-
-        if (selectedAnswer) {
-          console.log("Selected Answer:", selectedAnswer);
-          console.log("Correct Answer:", quiz.getQuestion().answer);
-          quiz.checkAnswer(selectedAnswer);
-
-          mySound.play();
-          quiz.moveToNextQuestion();
-          showQuestion();
-        }
-      }
-    }
-  });
-
-
 
   function startGame() {
     loadScreen.style.display = "none";
@@ -66,6 +30,51 @@ document.addEventListener("DOMContentLoaded", () => {
     spaceBarContext = "game";
     showQuestion();
   }
+
+  function handleSpaceBarEvent() {
+    if (spaceBarContext === "start") {
+      startGameSound.play();
+      startScreen.style.display = "none";
+      loadScreen.style.display = "flex";
+      spaceBarContext = "load";
+      setTimeout(startGame, 3200);
+    } else if (spaceBarContext === "game") {
+      const selectedAnswer = document.querySelector(
+        "input[name=choice]:checked"
+      );
+      if (selectedAnswer) {
+        console.log("Selected Answer:", selectedAnswer.value);
+        console.log("Correct Answer:", quiz.getQuestion().answer);
+        quiz.checkAnswer(selectedAnswer.value);
+
+        mySound.play();
+        quiz.moveToNextQuestion();
+        showQuestion();
+      }
+    }
+  }
+
+  function handleMobileTap() {
+    handleSpaceBarEvent();
+  }
+
+  if (isMobile) {
+    nextButton.textContent = "Next question";
+  } else {
+    nextButton.textContent = "Press space to continue";
+  }
+
+  startButton.addEventListener(
+    isMobile ? "click" : "keydown",
+    isMobile ? handleMobileTap : handleSpaceBarEvent
+  );
+
+  document
+    .getElementById("nextButton")
+    .addEventListener(
+      isMobile ? "click" : "keydown",
+      isMobile ? handleMobileTap : handleSpaceBarEvent
+    );
 
   function showResults() {
     gameScreen.style.display = "none";
@@ -126,6 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /************  QUIZ DATA  ************/
+  // Define your Question and Quiz classes here
 
   const questions = [
     new Question(
@@ -170,82 +180,23 @@ document.addEventListener("DOMContentLoaded", () => {
   quiz.shuffleQuestions();
   showQuestion();
 
-  const restartButton = document.querySelector("#restartButton");
-  restartButton.addEventListener("click", () => {
-    location.reload();
-  });
+  startButton.addEventListener(
+    isMobile ? "click" : "keydown",
+    isMobile ? handleMobileTap : handleSpaceBarEvent
+  );
 
-  if (isMobile) {
-    document.removeEventListener("keydown", handleKeyDown);
-    startButton.addEventListener("click", function () {
-      if (spaceBarContext === "start") {
-        startGameSound.play();
-        startScreen.style.display = "none";
-        loadScreen.style.display = "flex";
-        spaceBarContext = "load";
-        setTimeout(() => {
-          startGame();
-        }, 3200);
-      } else if (spaceBarContext === "game") {
-        // Handle click for game context
-        let selectedAnswer;
-        const choices = document.querySelectorAll("input[name=choice]");
+  function restartGame() {
+    quiz.reset();
 
-        choices.forEach((choice) => {
-          if (choice.checked) {
-            selectedAnswer = choice.value;
-          }
-        });
-
-        if (selectedAnswer) {
-          console.log("Selected Answer:", selectedAnswer);
-          console.log("Correct Answer:", quiz.getQuestion().answer);
-          quiz.checkAnswer(selectedAnswer);
-
-          mySound.play();
-          quiz.moveToNextQuestion();
-          showQuestion();
-        }
-      }
-    });
-  } else {
-    // Add the space bar event listener for non-mobile devices
-    document.addEventListener("keydown", handleKeyDown);
+    endScreen.style.display = "none";
+    startScreen.style.display = "flex";
+    startGame();
+    // Reattach event listener for the start button
+    startButton.addEventListener(
+      isMobile ? "click" : "keydown",
+      isMobile ? handleMobileTap : handleSpaceBarEvent
+    );
   }
 
-  function handleKeyDown(event) {
-    if (event.code === "Space") {
-      event.preventDefault();
-      console.log("Space bar pressed");
-      if (spaceBarContext === "start") {
-        startGameSound.play();
-        startScreen.style.display = "none";
-        loadScreen.style.display = "flex";
-        spaceBarContext = "load";
-        setTimeout(() => {
-          startGame();
-        }, 3200);
-      } else if (spaceBarContext === "game") {
-        let selectedAnswer;
-        const choices = document.querySelectorAll("input[name=choice]");
-
-        choices.forEach((choice) => {
-          if (choice.checked) {
-            selectedAnswer = choice.value;
-          }
-        });
-
-        if (selectedAnswer) {
-          console.log("Selected Answer:", selectedAnswer);
-          console.log("Correct Answer:", quiz.getQuestion().answer);
-          quiz.checkAnswer(selectedAnswer);
-
-          mySound.play();
-          quiz.moveToNextQuestion();
-          showQuestion();
-        }
-      }
-    }
-  
-  }
+  restartButton.addEventListener("click", restartGame);
 });
