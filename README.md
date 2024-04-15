@@ -10,11 +10,10 @@ A quirky little quiz about Poland and the Polish language. No in-depth knowledge
 
 Start screen:
 
-![start screen](./images/screenrecording.mp4)
-<!-- <video width="320" height="240" controls>
-  <source src="./images/screenrecording.mp4" type="video/mp4">
+<video width="320" height="240" controls>
+  <source src="https://youtube.com/shorts/HTN4065CqkM?feature=share" type="video">
   Your browser does not support the video tag.
-</video> -->
+</video>
 
 Load screen:
 
